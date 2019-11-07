@@ -183,7 +183,7 @@ CREATE TABLE `tb_shop` (
   `priority` int(3) DEFAULT '0',  
   `create_time` datetime DEFAULT NULL,  
   `update_time` datetime DEFAULT NULL,  
-  `STATUS` int(2) NOT NULL DEFAULT '0',  
+  `status` int(2) NOT NULL DEFAULT '0',  
   `advice` varchar(255) DEFAULT NULL,  
   PRIMARY KEY (`id`),  
   KEY `fk_shop_area` (`area_id`),  
@@ -238,3 +238,37 @@ CREATE TABLE `tb_wechat_auth` (
 -- ----------------------------
 -- Records of tb_wechat_auth
 -- ----------------------------
+
+##项目结构
+** web-inf  外部浏览器无法直接访问到  
+** web.xml  初始化配置信息
+** dto  弥补entity不足
+
+##构建maven依赖
+
+##配置文件
+###jdbc
+###mybatis
+###spring
+####spring-dao.xml
+####spring-service.xml
+####spring-web.xml
+
+##基本架构搭建
+
+##logback配置
+    logback-access  
+    logback-classic
+    logback-core
+    
+    标签
+    logger  存放日志对象，定义日志类型，级别
+    appender  输出日志媒介
+    layout
+    
+    加载顺序
+    
+##店铺模块  
+###店铺注册
+###更新店铺信息
+

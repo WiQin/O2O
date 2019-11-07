@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wyw.o2o.dao.ShopDao">
+    <insert id="insertShop" useGeneratedKeys="true" parameterType="com.wyw.o2o.entity.Shop" keyColumn="id" keyProperty="id">
+        insert into tb_shop
+        (owner_id,area_id,shop_category_id,
+        name,desc,address,img,priority,create_time,
+        update_time,status,advice)
+        values
+        (#{owner.userId},#{area.areaId},
+        #{shopCategory.id},#{name},#{desc},{address},
+        #{img},#{priority},#{createTime},#{updateTime},
+        #{status},#{advice})
+    </insert>
+
+    <update id="updateShop" parameterType="com.wyw.o2o.entity.Shop">
+        update tb_shop
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="desc != null">
+                desc = #{name},
+            </if>
+            <if test="address != null">
+                address = #{address},
+            </if>
+            <if test="priority != null">
+                priority = #{priority},
+            </if>
+            <if test="shopCategory != null">
+                shop_category_id=#{shopCategory.id},
+            </if>
+            <if test="area != null">
+                area_id=#{area.id},
+            </if>
+            <if test="owner != null">
+            owner_id=#{owner.id},
+            </if>
+            updateTime=#{new Date()}
+        </set>
+        where
+        id=#{id}
+    </update>
+</mapper>

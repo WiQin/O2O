@@ -48,6 +48,5 @@ public class AreaController {
         LOGGER.info("===end===");
         LOGGER.debug("costTime:[{}ms]",end-start);
         return map;
-
     }
 }

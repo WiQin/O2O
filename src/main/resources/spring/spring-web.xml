@@ -56,37 +56,37 @@
     <!-- 5.权限拦截器 -->
    <!-- <mvc:interceptors>
         <mvc:interceptor>
-            <mvc:mapping path="/shop/**" />
-            <mvc:exclude-mapping path="/shop/ownerlogin" />
-            <mvc:exclude-mapping path="/shop/ownerlogincheck" />
-            <mvc:exclude-mapping path="/shop/logout" />
-            <mvc:exclude-mapping path="/shop/register" />
-            <bean id="ShopInterceptor" class="com.wyw.o2o.interceptor.shop.ShopLoginInterceptor" />
+            <mvc:mapping path="/shopadmin/**" />
+            <mvc:exclude-mapping path="/shopadmin/ownerlogin" />
+            <mvc:exclude-mapping path="/shopadmin/ownerlogincheck" />
+            <mvc:exclude-mapping path="/shopadmin/logout" />
+            <mvc:exclude-mapping path="/shopadmin/register" />
+            <bean id="ShopInterceptor" class="com.wyw.o2o.interceptor.shopadmin.ShopLoginInterceptor" />
         </mvc:interceptor>
         <mvc:interceptor>
-            <mvc:mapping path="/shop/**" />
-            <mvc:exclude-mapping path="/shop/ownerlogin" />
-            <mvc:exclude-mapping path="/shop/ownerlogincheck" />
-            <mvc:exclude-mapping path="/shop/register" />
+            <mvc:mapping path="/shopadmin/**" />
+            <mvc:exclude-mapping path="/shopadmin/ownerlogin" />
+            <mvc:exclude-mapping path="/shopadmin/ownerlogincheck" />
+            <mvc:exclude-mapping path="/shopadmin/register" />
             &lt;!&ndash; shoplist page &ndash;&gt;
-            <mvc:exclude-mapping path="/shop/shoplist" />
-            <mvc:exclude-mapping path="/shop/logout" />
-            <mvc:exclude-mapping path="/shop/list" />
+            <mvc:exclude-mapping path="/shopadmin/shoplist" />
+            <mvc:exclude-mapping path="/shopadmin/logout" />
+            <mvc:exclude-mapping path="/shopadmin/list" />
             &lt;!&ndash; changepsw page &ndash;&gt;
-            <mvc:exclude-mapping path="/shop/changepsw" />
-            <mvc:exclude-mapping path="/shop/changelocalpwd" />
+            <mvc:exclude-mapping path="/shopadmin/changepsw" />
+            <mvc:exclude-mapping path="/shopadmin/changelocalpwd" />
             &lt;!&ndash; ownerbind page &ndash;&gt;
-            <mvc:exclude-mapping path="/shop/ownerbind" />
-            <mvc:exclude-mapping path="/shop/bindlocalauth" />
+            <mvc:exclude-mapping path="/shopadmin/ownerbind" />
+            <mvc:exclude-mapping path="/shopadmin/bindlocalauth" />
             &lt;!&ndash; shopmanage page &ndash;&gt;
-            <mvc:exclude-mapping path="/shop/shopmanage" />
+            <mvc:exclude-mapping path="/shopadmin/shopmanage" />
             &lt;!&ndash; shopedit page &ndash;&gt;
-            <mvc:exclude-mapping path="/shop/shopedit" />
-            <mvc:exclude-mapping path="/shop/getshopbyid" />
-            <mvc:exclude-mapping path="/shop/getshopinitinfo" />
-            <mvc:exclude-mapping path="/shop/registershop" />
+            <mvc:exclude-mapping path="/shopadmin/shopedit" />
+            <mvc:exclude-mapping path="/shopadmin/getshopbyid" />
+            <mvc:exclude-mapping path="/shopadmin/getshopinitinfo" />
+            <mvc:exclude-mapping path="/shopadmin/registershop" />
             <bean id="ShopPermissionInterceptor"
-                  class="com.wyw.o2o.interceptor.shop.ShopPermissionInterceptor" />
+                  class="com.wyw.o2o.interceptor.shopadmin.ShopPermissionInterceptor" />
         </mvc:interceptor>
         <mvc:interceptor>
             <mvc:mapping path="/superadmin/**" />

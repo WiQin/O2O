@@ -3,22 +3,48 @@ package com.wyw.o2o.entity;
 import java.util.Date;
 
 public class HeadLine {
-    private Long id;
+    private Long lineId;
+    private String lineName;
+    private String lineLink;
+    private String lineImg;
     private Integer priority;
-    //0不可用，1可用
-    private Integer status;
-    private String name;
-    private String url;
-    private String img;
+    /**
+     * 0.不可用  1.可用
+     */
+    private Integer enableStatus;
     private Date createTime;
-    private Date updateTime;
+    private Date lastEditTime;
 
-    public Long getId() {
-        return id;
+    public Long getLineId() {
+        return lineId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setLineId(Long lineId) {
+        this.lineId = lineId;
+    }
+
+    public String getLineName() {
+        return lineName;
+    }
+
+    public void setLineName(String lineName) {
+        this.lineName = lineName;
+    }
+
+    public String getLineLink() {
+        return lineLink;
+    }
+
+    public void setLineLink(String lineLink) {
+        this.lineLink = lineLink;
+    }
+
+    public String getLineImg() {
+        return lineImg;
+    }
+
+    public void setLineImg(String lineImg) {
+        this.lineImg = lineImg;
     }
 
     public Integer getPriority() {
@@ -29,36 +55,12 @@ public class HeadLine {
         this.priority = priority;
     }
 
-    public Integer getStatus() {
-        return status;
+    public Integer getEnableStatus() {
+        return enableStatus;
     }
 
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
+    public void setEnableStatus(Integer enableStatus) {
+        this.enableStatus = enableStatus;
     }
 
     public Date getCreateTime() {
@@ -69,11 +71,12 @@ public class HeadLine {
         this.createTime = createTime;
     }
 
-    public Date getUpdateTime() {
-        return updateTime;
+    public Date getLastEditTime() {
+        return lastEditTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    public void setLastEditTime(Date lastEditTime) {
+        this.lastEditTime = lastEditTime;
     }
+
 }

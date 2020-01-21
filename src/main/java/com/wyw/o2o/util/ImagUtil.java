@@ -28,7 +28,7 @@ public class ImagUtil {
     /**
      * 处理缩略图
      *
-     * @param thumbnail  上传图片
+     * @param thumbnail  用户上传的图片
      * @param targerAddr 文件存储路径
      */
     public static String generateThumbnail(CommonsMultipartFile thumbnail, String targerAddr) {
@@ -57,7 +57,7 @@ public class ImagUtil {
      *
      * @param
      */
-    private static String getRandomFileName() {
+    public static String getRandomFileName() {
         //获取随机五位数
         int randomNum = R.nextInt(89999)+1000;
         //当前时间
@@ -93,6 +93,7 @@ public class ImagUtil {
 
     public static void main(String[] args) throws IOException {
         System.out.println(basePath);
+        //为图片添加水印
         Thumbnails.of(new File("d:\\Users\\Pictures\\new.jpg"))
                 //像素大小
                 .size(300, 300)

@@ -26,21 +26,24 @@ public class ShopDaoTest extends BaseTest {
         PersonInfo owner = new PersonInfo();
         owner.setUserId(1L);
         ShopCategory shopCategory = new ShopCategory();
-        shopCategory.setId(1L);
+        shopCategory.setShopCategoryId(1L);
         Area area = new Area();
         area.setAreaId(2);
         Shop shop = new Shop();
-        shop.setOwner(owner);
-        shop.setShopCategory(shopCategory);
-        shop.setArea(area);
-        shop.setName("测试店铺1");
-        shop.setAddress("XXX-XXX-XXX");
-        shop.setDesc("测试新增店铺功能");
+//        shop.setOwner(owner);
+//        shop.setShopCategory(shopCategory);
+//        shop.setArea(area);
+        shop.setShopName("测试店铺1");
+        shop.setShopAddr("XXX-XXX-XXX");
+        shop.setShopDesc("测试修改店铺功能");
         shop.setCreateTime(new Date());
-        shop.setStatus(1);
+        shop.setEnableStatus(1);
         shop.setAdvice("审核中");
+        shop.setShopId(1L);
 
-        int effectNum = shopDao.insertShop(shop);
-        assertEquals(1,effectNum);
+//        int effectNum = shopDao.insertShop(shop);
+
+        shopDao.updateShop(shop);
+//        assertEquals(1,effectNum);
     }
 }

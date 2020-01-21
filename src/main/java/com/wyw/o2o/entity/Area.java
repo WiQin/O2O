@@ -9,15 +9,15 @@ import java.util.Date;
  * @date 2019/09/21
  */
 public class Area {
-    private Integer areaId;//id
-
-    private Integer areaName;//区域名称
-
-    private Integer priority;//权重
-
-    private Date createTime;//创建时间
-
-    private Date UpdateTime;//更新时间
+    /**
+     * id
+     */
+    private Integer areaId;
+    private String areaName;
+    private String areaDesc;
+    private Integer priority;
+    private Date createTime;
+    private Date lastEditTime;
 
     public Integer getAreaId() {
         return areaId;
@@ -27,12 +27,20 @@ public class Area {
         this.areaId = areaId;
     }
 
-    public Integer getAreaName() {
+    public String getAreaName() {
         return areaName;
     }
 
-    public void setAreaName(Integer areaName) {
+    public void setAreaName(String areaName) {
         this.areaName = areaName;
+    }
+
+    public String getAreaDesc() {
+        return areaDesc;
+    }
+
+    public void setAreaDesc(String areaDesc) {
+        this.areaDesc = areaDesc;
     }
 
     public Integer getPriority() {
@@ -51,11 +59,11 @@ public class Area {
         this.createTime = createTime;
     }
 
-    public Date getUpdateTime() {
-        return UpdateTime;
+    public Date getLastEditTime() {
+        return lastEditTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
-        UpdateTime = updateTime;
+    public void setLastEditTime(Date lastEditTime) {
+        this.lastEditTime = lastEditTime;
     }
 }

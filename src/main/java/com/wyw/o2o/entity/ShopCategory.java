@@ -1,47 +1,48 @@
 package com.wyw.o2o.entity;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class ShopCategory {
-    private Long id;
-    private String name;
-    private String desc;
-    private String img;
+
+    private Long shopCategoryId;
+    private String shopCategoryName;
+    private String shopCategoryDesc;
+    private String shopCategoryImg;
     private Integer priority;
     private Date createTime;
-    private Date updateTime;
+    private Date lastEditTime;
     private ShopCategory parent;
 
-    public Long getId() {
-        return id;
+    public Long getShopCategoryId() {
+        return shopCategoryId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setShopCategoryId(Long shopCategoryId) {
+        this.shopCategoryId = shopCategoryId;
     }
 
-    public String getName() {
-        return name;
+    public String getShopCategoryName() {
+        return shopCategoryName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setShopCategoryName(String shopCategoryName) {
+        this.shopCategoryName = shopCategoryName;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getShopCategoryDesc() {
+        return shopCategoryDesc;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setShopCategoryDesc(String shopCategoryDesc) {
+        this.shopCategoryDesc = shopCategoryDesc;
     }
 
-    public String getImg() {
-        return img;
+    public String getShopCategoryImg() {
+        return shopCategoryImg;
     }
 
-    public void setImg(String img) {
-        this.img = img;
+    public void setShopCategoryImg(String shopCategoryImg) {
+        this.shopCategoryImg = shopCategoryImg;
     }
 
     public Integer getPriority() {
@@ -60,12 +61,12 @@ public class ShopCategory {
         this.createTime = createTime;
     }
 
-    public Date getUpdateTime() {
-        return updateTime;
+    public Date getLastEditTime() {
+        return lastEditTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    public void setLastEditTime(Date lastEditTime) {
+        this.lastEditTime = lastEditTime;
     }
 
     public ShopCategory getParent() {
@@ -76,3 +77,4 @@ public class ShopCategory {
         this.parent = parent;
     }
 }
+

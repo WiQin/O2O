@@ -1,40 +1,51 @@
 package com.wyw.o2o.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class Product {
-    private Long id;
-    private String name;
-    private String desc;
-    private String imgAddr;
-    private String originPrice;
+public class Product implements Serializable {
+    private static final long serialVersionUID = -349433539553804024L;
+    private Long productId;
+    private String productName;
+    private String productDesc;
+    private String imgAddr;// 简略图
+    private String normalPrice;
     private String promotionPrice;
     private Integer priority;
     private Date createTime;
+    private Date lastEditTime;
+    /**
+     * -1 不可用  0 下架  1可销售
+     */
+    private Integer enableStatus;
 
-    public Long getId() {
-        return id;
+    private List<ProductImg> productImgList;
+    private ProductCategory productCategory;
+    private Shop shop;
+
+    public Long getProductId() {
+        return productId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 
-    public String getName() {
-        return name;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getProductDesc() {
+        return productDesc;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setProductDesc(String productDesc) {
+        this.productDesc = productDesc;
     }
 
     public String getImgAddr() {
@@ -45,12 +56,12 @@ public class Product {
         this.imgAddr = imgAddr;
     }
 
-    public String getOriginPrice() {
-        return originPrice;
+    public String getNormalPrice() {
+        return normalPrice;
     }
 
-    public void setOriginPrice(String originPrice) {
-        this.originPrice = originPrice;
+    public void setNormalPrice(String normalPrice) {
+        this.normalPrice = normalPrice;
     }
 
     public String getPromotionPrice() {
@@ -77,20 +88,20 @@ public class Product {
         this.createTime = createTime;
     }
 
-    public Date getUpdateTime() {
-        return updateTime;
+    public Date getLastEditTime() {
+        return lastEditTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    public void setLastEditTime(Date lastEditTime) {
+        this.lastEditTime = lastEditTime;
     }
 
-    public Integer getStatus() {
-        return status;
+    public Integer getEnableStatus() {
+        return enableStatus;
     }
 
-    public void setStatus(Integer status) {
-        this.status = status;
+    public void setEnableStatus(Integer enableStatus) {
+        this.enableStatus = enableStatus;
     }
 
     public List<ProductImg> getProductImgList() {
@@ -117,10 +128,4 @@ public class Product {
         this.shop = shop;
     }
 
-    private Date updateTime;
-    //-1不可用，0下架，1，可销售
-    private Integer status;
-    private List<ProductImg> productImgList;
-    private ProductCategory productCategory;
-    private Shop shop;
 }

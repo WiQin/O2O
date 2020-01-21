@@ -2,28 +2,31 @@ package com.wyw.o2o.entity;
 
 import java.sql.Date;
 
+/**
+ * 本地账号
+ */
 public class LocalAuth {
-    private Long id;
-    private String username;
+    private Long localAuthId;
+    private String userName;
     private String password;
     private Date createTime;
-    private Date updateTime;
+    private Date lastEditTime;
     private PersonInfo personInfo;
 
-    public Long getId() {
-        return id;
+    public Long getLocalAuthId() {
+        return localAuthId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setLocalAuthId(Long localAuthId) {
+        this.localAuthId = localAuthId;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -42,12 +45,12 @@ public class LocalAuth {
         this.createTime = createTime;
     }
 
-    public Date getUpdateTime() {
-        return updateTime;
+    public Date getLastEditTime() {
+        return lastEditTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    public void setLastEditTime(Date lastEditTime) {
+        this.lastEditTime = lastEditTime;
     }
 
     public PersonInfo getPersonInfo() {
@@ -57,4 +60,5 @@ public class LocalAuth {
     public void setPersonInfo(PersonInfo personInfo) {
         this.personInfo = personInfo;
     }
+
 }

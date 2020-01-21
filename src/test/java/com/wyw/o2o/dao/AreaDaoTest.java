@@ -22,6 +22,10 @@ public class AreaDaoTest extends BaseTest {
     @Test
     public void testQueryArea(){
         List<Area> areaList = areaDao.queryArea();
-        assertEquals(2,areaList);//验证条数是否与实际相同
+//        assertEquals(4,areaList.size());//验证条数是否与实际相同
+        for (Area area : areaList){
+            System.out.println(area.toString());
+        }
+
     }
 }

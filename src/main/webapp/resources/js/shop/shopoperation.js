@@ -5,14 +5,13 @@
 $(function () {
     //获取店铺初始化信息（分类，区域信息）
     var initUrl = 'o2o/shopadmin/getshopinitinfo';
-
     //注册店铺
     var registerShopUrl = 'o2o/shopadmin/registershop';
     alert(initUrl);
     getShopInitInfo();
 
     function getShopInitInfo() {
-        $getJSON(initUrl,function (data) {
+        $.getJSON(initUrl,function (data) {
             if(data.success){
                 var tempHtml = '';
                 var tempAreaHtml = '';
@@ -49,6 +48,13 @@ $(function () {
             var formData = new FormData();
             formData.append('shopImg', shopImg);
             formData.append('shopStr', JSON.stringify(shop));
+
+            var vertifyCodeActual = $('#j_captcha').val();
+            if (!vertifyCodeActual){
+                $.toast('请输入验证码');
+                return;
+            }
+            formData.append('vertifyCodeActual',vertifyCodeActual);
             $.ajax({
                 url : registerShopUrl,
                 type : 'POST',
@@ -59,7 +65,7 @@ $(function () {
                 cache : false,
                 success : function(data) {
                     if (data.success) {
-                        $.toast('提交成功！');
+                        $.toast('提交成功.');
                         // if (isEdit){
                         //     $('#captcha_img').click();
                         // } else{
@@ -69,6 +75,7 @@ $(function () {
                         $.toast('提交失败！');
                         $('#captcha_img').click();
                     }
+                    $('#captcha_img').click();
                 }
             });
         });

@@ -2,27 +2,38 @@ package com.wyw.o2o.entity;
 
 import java.sql.Date;
 
+/**
+ * 商品类别
+ */
 public class ProductCategory {
-    private Long id;
-    private String name;
+    private Long productCategoryId;
+    private Long shopId;
+    private String productCategoryName;
     private Integer priority;
     private Date createTime;
-    private Shop shopId;
 
-    public Long getId() {
-        return id;
+    public Long getProductCategoryId() {
+        return productCategoryId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setProductCategoryId(Long productCategoryId) {
+        this.productCategoryId = productCategoryId;
     }
 
-    public String getName() {
-        return name;
+    public Long getShopId() {
+        return shopId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setShopId(Long shopId) {
+        this.shopId = shopId;
+    }
+
+    public String getProductCategoryName() {
+        return productCategoryName;
+    }
+
+    public void setProductCategoryName(String productCategoryName) {
+        this.productCategoryName = productCategoryName;
     }
 
     public Integer getPriority() {
@@ -41,11 +52,5 @@ public class ProductCategory {
         this.createTime = createTime;
     }
 
-    public Shop getShopId() {
-        return shopId;
-    }
 
-    public void setShopId(Shop shopId) {
-        this.shopId = shopId;
-    }
 }

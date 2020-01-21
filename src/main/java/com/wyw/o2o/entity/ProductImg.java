@@ -2,36 +2,39 @@ package com.wyw.o2o.entity;
 
 import java.util.Date;
 
+/**
+ * 商品图片
+ */
 public class ProductImg {
-    private Long id;
-    private String addr;
-    private String desc;
+    private Long productImgId;
+    private String imgAddr;
+    private String imgDesc;
     private Integer priority;
     private Date createTime;
     private Long productId;
 
-    public Long getId() {
-        return id;
+    public Long getProductImgId() {
+        return productImgId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setProductImgId(Long productImgId) {
+        this.productImgId = productImgId;
     }
 
-    public String getAddr() {
-        return addr;
+    public String getImgAddr() {
+        return imgAddr;
     }
 
-    public void setAddr(String addr) {
-        this.addr = addr;
+    public void setImgAddr(String imgAddr) {
+        this.imgAddr = imgAddr;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getImgDesc() {
+        return imgDesc;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setImgDesc(String imgDesc) {
+        this.imgDesc = imgDesc;
     }
 
     public Integer getPriority() {
@@ -57,4 +60,6 @@ public class ProductImg {
     public void setProductId(Long productId) {
         this.productId = productId;
     }
+
 }
+

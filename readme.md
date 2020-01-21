@@ -1,4 +1,5 @@
-#校园商铺平台项目实战
+#校园商铺平台项目
+
 
 ##实体类：
     1.区域  ID,权重，创建时间，修改时间，名称
@@ -268,7 +269,21 @@ CREATE TABLE `tb_wechat_auth` (
     
     加载顺序
     
-##店铺模块  
+##店铺模块 
 ###店铺注册
+dao  
+service  
+controller:
+通过不同请求方式实现增删盖改查
+###前端
+借鉴SUI Mobile,但是不要将html文件放在web-app下，而是放在web-inf目录下，通过ShopAdminController访问  
+shopoparation.js编写，引入html文件
+验证码功能：引入kaptcha依赖，在web.xml编写servlet
+html编写控件，图片控件中编写onclick事件方法响应请求，调servlet生成验证码  
+js中获取验证码，传入后台
+不管提交是否成功，都更改验证码
+controller中添加验证码比对
+
 ###更新店铺信息
+
 

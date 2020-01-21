@@ -9,16 +9,17 @@ import java.util.Date;
  * @date 2019/09/21
  */
 public class PersonInfo {
+
     private Long userId;
     private String name;
-    private String img_url;
+    private String profileImg;
     private String email;
     private String gender;
     private Integer enableStatus;
-    //1.顾客 2.店家 3.管理员
+    //1.顾客  2.店家  3.超级管理员
     private Integer userType;
     private Date createTime;
-    private Date updateTime;
+    private Date lastEditTime;
 
     public Long getUserId() {
         return userId;
@@ -36,12 +37,12 @@ public class PersonInfo {
         this.name = name;
     }
 
-    public String getImg_url() {
-        return img_url;
+    public String getProfileImg() {
+        return profileImg;
     }
 
-    public void setImg_url(String img_url) {
-        this.img_url = img_url;
+    public void setProfileImg(String profileImg) {
+        this.profileImg = profileImg;
     }
 
     public String getEmail() {
@@ -68,14 +69,6 @@ public class PersonInfo {
         this.enableStatus = enableStatus;
     }
 
-    public Integer getUserType() {
-        return userType;
-    }
-
-    public void setUserType(Integer userType) {
-        this.userType = userType;
-    }
-
     public Date getCreateTime() {
         return createTime;
     }
@@ -84,11 +77,19 @@ public class PersonInfo {
         this.createTime = createTime;
     }
 
-    public Date getUpdateTime() {
-        return updateTime;
+    public Date getLastEditTime() {
+        return lastEditTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    public void setLastEditTime(Date lastEditTime) {
+        this.lastEditTime = lastEditTime;
+    }
+
+    public Integer getUserType() {
+        return userType;
+    }
+
+    public void setUserType(Integer userType) {
+        this.userType = userType;
     }
 }

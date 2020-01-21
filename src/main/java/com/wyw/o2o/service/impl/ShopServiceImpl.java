@@ -40,17 +40,17 @@ public class ShopServiceImpl implements ShopService {
         if (shop == null) {
             return new ShopExecution(EnumShopState.NULL_SHOP);
         }
-        //todo shop其他字段的判断(是否为空，是否非法)
+        //todo shop其他字段判断(是否为空，是否非法)
 
         //添加店铺
         try {
             //初始化参数
             //状态 审核中
-            shop.setStatus(0);
+            shop.setEnableStatus(0);
             //创建时间
             shop.setCreateTime(new Date());
             //修改时间
-            shop.setUpdateTime(new Date());
+            shop.setLastEditTime(new Date());
 
             //数据库中插入店铺信息
             int effectNum = shopDao.insertShop(shop);
@@ -81,8 +81,8 @@ public class ShopServiceImpl implements ShopService {
 
     private void addShopImg(Shop shop,CommonsMultipartFile shopImg){
         //获取shop图片相对值路径
-        String dest = PathUtil.getShopImgPath(shop.getId());
+        String dest = PathUtil.getShopImgPath(shop.getShopId());
         String shopAddr = ImagUtil.generateThumbnail(shopImg,dest);
-        shop.setImg(shopAddr);
+        shop.setShopImg(shopAddr);
     }
 }

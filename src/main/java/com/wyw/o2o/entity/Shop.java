@@ -1,54 +1,61 @@
 package com.wyw.o2o.entity;
 
 import java.util.Date;
+import java.util.List;
 
+/**
+ * 店铺信息
+ */
 public class Shop {
-    private Long id;
-    private String name;
-    private String desc;
-    private String address;
+
+    private Long shopId;
+    private String shopName;
+    private String shopDesc;
+    private String shopAddr;
     private String phone;
-    private String img;
+    private String shopImg;
     private Integer priority;
     private Date createTime;
-    private Date updateTime;
-    //-1不可用，0审核中，1可用
-    private Integer status;
+    private Date lastEditTime;
+    /**
+     * -1不可用  0审核中  1可用
+     */
+    private Integer enableStatus;
     private String advice;
     private Area area;
     private PersonInfo owner;
     private ShopCategory shopCategory;
 
-    public Long getId() {
-        return id;
+    public Long getShopId() {
+        return shopId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setShopId(Long shopId) {
+        this.shopId = shopId;
     }
 
-    public String getName() {
-        return name;
+    public String getShopName() {
+        return shopName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setShopName(String shopName) {
+        this.shopName = shopName;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getShopDesc() {
+        return shopDesc;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setShopDesc(String shopDesc) {
+        this.shopDesc = shopDesc;
     }
 
-    public String getAddress() {
-        return address;
+    public String getShopAddr() {
+        return shopAddr;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setShopAddr(String shopAddr) {
+        this.shopAddr = shopAddr;
     }
 
     public String getPhone() {
@@ -59,12 +66,12 @@ public class Shop {
         this.phone = phone;
     }
 
-    public String getImg() {
-        return img;
+    public String getShopImg() {
+        return shopImg;
     }
 
-    public void setImg(String img) {
-        this.img = img;
+    public void setShopImg(String shopImg) {
+        this.shopImg = shopImg;
     }
 
     public Integer getPriority() {
@@ -83,20 +90,20 @@ public class Shop {
         this.createTime = createTime;
     }
 
-    public Date getUpdateTime() {
-        return updateTime;
+    public Date getLastEditTime() {
+        return lastEditTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    public void setLastEditTime(Date lastEditTime) {
+        this.lastEditTime = lastEditTime;
     }
 
-    public Integer getStatus() {
-        return status;
+    public Integer getEnableStatus() {
+        return enableStatus;
     }
 
-    public void setStatus(Integer status) {
-        this.status = status;
+    public void setEnableStatus(Integer enableStatus) {
+        this.enableStatus = enableStatus;
     }
 
     public String getAdvice() {

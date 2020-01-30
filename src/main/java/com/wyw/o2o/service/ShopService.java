@@ -2,7 +2,9 @@ package com.wyw.o2o.service;
 
 import com.wyw.o2o.dto.ShopExecution;
 import com.wyw.o2o.entity.Shop;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
+import java.io.File;
+import java.io.InputStream;
 
 
 /**
@@ -12,9 +14,10 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 public interface ShopService {
     /**
      * 创建店铺
-     * @param shop
-     * @param shopImg
+     * @param shop  店铺信息
+     * @param shopImgInputStream  店铺图片文件输入流
+     * @param fileaName  文件名
      * @return
      */
-    ShopExecution addShop(Shop shop, CommonsMultipartFile shopImg);
+    ShopExecution addShop(Shop shop, InputStream shopImgInputStream,String fileaName);
 }

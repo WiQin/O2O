@@ -4,9 +4,9 @@
  */
 $(function () {
     //获取店铺初始化信息（分类，区域信息）
-    var initUrl = 'o2o/shopadmin/getshopinitinfo';
+    var initUrl = '/o2o/shopadmin/getshopinitinfo';
     //注册店铺
-    var registerShopUrl = 'o2o/shopadmin/registershop';
+    var registerShopUrl = '/o2o/shopadmin/registershop';
     alert(initUrl);
     getShopInitInfo();
 
@@ -15,13 +15,13 @@ $(function () {
             if(data.success){
                 var tempHtml = '';
                 var tempAreaHtml = '';
-                data.shopCategoryList.map(function(item,index){
-                    tempHtml += '<option data-id="' + item.shopCategoryId
-                        + '">' + item.shopCategoryName + '</option>';
-                });
                 data.areaList.map(function(item, index) {
                     tempAreaHtml += '<option data-id="' + item.areaId + '">'
                         + item.areaName + '</option>';
+                });
+                data.categoryList.map(function(item,index){
+                    tempHtml += '<option data-id="' + item.shopCategoryId
+                        + '">' + item.shopCategoryName + '</option>';
                 });
                 $('#shop-category').html(tempHtml);
                 $('#area').html(tempAreaHtml);
@@ -72,7 +72,7 @@ $(function () {
                         //     window.location.href="/shop/shoplist";
                         // }
                     } else {
-                        $.toast('提交失败！');
+                        $.toast('提交失败！'+data.errMsg);
                         $('#captcha_img').click();
                     }
                     $('#captcha_img').click();

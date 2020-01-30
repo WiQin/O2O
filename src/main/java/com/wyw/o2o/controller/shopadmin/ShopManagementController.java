@@ -1,5 +1,6 @@
 package com.wyw.o2o.controller.shopadmin;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wyw.o2o.dto.ShopExecution;
 import com.wyw.o2o.entity.Area;
@@ -14,6 +15,8 @@ import com.wyw.o2o.util.CodeUtil;
 import com.wyw.o2o.util.HttpServletRequestUtil;
 import com.wyw.o2o.util.ImagUtil;
 import com.wyw.o2o.util.PathUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,6 +42,7 @@ import java.util.Map;
 @Controller
 @RequestMapping("/shopadmin")
 public class ShopManagementController {
+    private static final Logger logger = LoggerFactory.getLogger(ShopManagementController.class);
 
     @Autowired
     ShopService shopService;
@@ -49,7 +53,7 @@ public class ShopManagementController {
 
     @RequestMapping(value = "/getshopinitinfo", method = RequestMethod.GET)
     @ResponseBody
-    private Map<String, Object> getShopInitInfo() {
+    private Map<String, Object> getShopInitInfo() throws JsonProcessingException {
         Map<String, Object> modelMap = new HashMap<>();
         List<ShopCategory> categoryList;
         List<Area> areaList;
@@ -64,6 +68,8 @@ public class ShopManagementController {
             modelMap.put("success",false);
             modelMap.put("errMsg", e.getMessage());
         }
+        ObjectMapper mapper = new ObjectMapper();
+        logger.info("店铺结果信息："+mapper.writeValueAsString(modelMap));
         return modelMap;
     }
 
@@ -113,21 +119,27 @@ public class ShopManagementController {
             owner.setUserId(1L);
             shop.setOwner(owner);
 
-            File imgFile = new File(PathUtil.getImgBasePath() + ImagUtil.getRandomFileName());
+//            File imgFile = new File(PathUtil.getImgBasePath() + ImagUtil.getRandomFileName());
+//            try {
+//                imgFile.createNewFile();
+//                inputStreamToFile(shopImg.getInputStream(), imgFile);
+//            } catch (IOException e) {
+//                modelMap.put("success", false);
+//                modelMap.put("errMsg", e.getMessage());
+//                return modelMap;
+//            }
+            ShopExecution se;
             try {
-                imgFile.createNewFile();
-                inputStreamToFile(shopImg.getInputStream(), imgFile);
+                se = shopService.addShop(shop, shopImg.getInputStream(),shopImg.getOriginalFilename());
+                if (se.getState() == EnumShopState.CHECK.getState()) {
+                    modelMap.put("success", true);
+                } else {
+                    modelMap.put("success", false);
+                    modelMap.put("errMsg", se.getStateInfo());
+                }
             } catch (IOException e) {
                 modelMap.put("success", false);
                 modelMap.put("errMsg", e.getMessage());
-                return modelMap;
-            }
-            ShopExecution se = shopService.addShop(shop, shopImg);
-            if (se.getState() == EnumShopState.CHECK.getState()) {
-                modelMap.put("success", true);
-            } else {
-                modelMap.put("success", false);
-                modelMap.put("errMsg", se.getStateInfo());
             }
             return modelMap;
         } else {
@@ -137,30 +149,30 @@ public class ShopManagementController {
         }
     }
 
-    private static void inputStreamToFile(InputStream ins, File file) {
-        FileOutputStream os = null;
-        try {
-            os = new FileOutputStream(file);
-            int byteRead;
-            byte[] buffer = new byte[1024];
-            //循环将ins中的数据读入buffer[]中
-            while ((byteRead = ins.read(buffer)) != -1) {
-                //将buffer中的内容写入输出流
-                os.write(buffer, 0, byteRead);
-            }
-        } catch (Exception e) {
-            throw new RuntimeException("调用inputStreamToFile产生异常：" + e.getMessage());
-        } finally {
-            try {
-                if (null != os) {
-                    os.close();
-                }
-                if (null != ins) {
-                    ins.close();
-                }
-            } catch (IOException e) {
-                throw new RuntimeException("调用inputStreamToFile关闭io产生异常：" + e.getMessage());
-            }
-        }
-    }
+//    private static void inputStreamToFile(InputStream ins, File file) {
+//        FileOutputStream os = null;
+//        try {
+//            os = new FileOutputStream(file);
+//            int byteRead;
+//            byte[] buffer = new byte[1024];
+//            //循环将ins中的数据读入buffer[]中
+//            while ((byteRead = ins.read(buffer)) != -1) {
+//                //将buffer中的内容写入输出流
+//                os.write(buffer, 0, byteRead);
+//            }
+//        } catch (Exception e) {
+//            throw new RuntimeException("调用inputStreamToFile产生异常：" + e.getMessage());
+//        } finally {
+//            try {
+//                if (null != os) {
+//                    os.close();
+//                }
+//                if (null != ins) {
+//                    ins.close();
+//                }
+//            } catch (IOException e) {
+//                throw new RuntimeException("调用inputStreamToFile关闭io产生异常：" + e.getMessage());
+//            }
+//        }
+//    }
 }

@@ -6,10 +6,14 @@ import com.wyw.o2o.entity.Area;
 import com.wyw.o2o.entity.PersonInfo;
 import com.wyw.o2o.entity.Shop;
 import com.wyw.o2o.entity.ShopCategory;
+import com.wyw.o2o.enums.EnumShopState;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
@@ -24,7 +28,7 @@ public class ShopServiceTest extends BaseTest {
     private ShopService shopService;
 
     @Test
-    public void addShopTest(){
+    public void addShopTest() throws FileNotFoundException {
         PersonInfo owner = new PersonInfo();
         owner.setUserId(1L);
         ShopCategory shopCategory = new ShopCategory();
@@ -42,10 +46,11 @@ public class ShopServiceTest extends BaseTest {
         shop.setEnableStatus(1);
         shop.setAdvice("审核中");
 
-//        File image = new File("路径");
+        File image = new File("路径");
 //        CommonsMultipartFile file = new CommonsMultipartFile();
 
-//        ShopExecution shopExecution = shopService.addShop(shop, file);
-//        assertEquals(0,shopExecution.getState());
+        FileInputStream fileInputStream = new FileInputStream(image);
+        ShopExecution shopExecution = shopService.addShop(shop,fileInputStream,image.getName());
+        assertEquals(EnumShopState.CHECK.getState(),shopExecution.getState());
     }
 }

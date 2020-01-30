@@ -7,6 +7,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
@@ -28,14 +29,14 @@ public class ImagUtil {
     /**
      * 处理缩略图
      *
-     * @param thumbnail  用户上传的图片
+     * @param thumbnailInputStream  用户上传的图片
      * @param targerAddr 文件存储路径
      */
-    public static String generateThumbnail(CommonsMultipartFile thumbnail, String targerAddr) {
+    public static String generateThumbnail(InputStream thumbnailInputStream, String fileName,String targerAddr) {
         //获取随机的图片名称（用户上传的图片可能重名）
         String realFileName = getRandomFileName();
         //文件扩展名
-        String extension = getFileExtension(thumbnail);
+        String extension = getFileExtension(fileName);
         //创建存储目录(可能不存在)
         makeDirPath(targerAddr);
         //获取相对路径
@@ -43,8 +44,8 @@ public class ImagUtil {
         //创建文件
         File dest = new File(PathUtil.getImgBasePath() + relativeAddr);
         try {
-            Thumbnails.of(thumbnail.getInputStream()).size(200, 200)
-                    .watermark(Positions.TOP_RIGHT, ImageIO.read(new File(basePath + "\\watermark.jpg")), 0.25f)
+            Thumbnails.of(thumbnailInputStream).size(200, 200)
+                    .watermark(Positions.TOP_RIGHT, ImageIO.read(new File(basePath + "\\img\\watermark.jpg")), 0.25f)
                     .outputQuality(0.8f).toFile(dest);
         } catch (IOException e) {
             e.printStackTrace();
@@ -68,12 +69,11 @@ public class ImagUtil {
     /**
      * 获取输入文件流扩展名
      *
-     * @param cFile
+     * @param filename
      * @return
      */
-    private static String getFileExtension(CommonsMultipartFile cFile) {
-        String originalFileName = cFile.getOriginalFilename();
-        return originalFileName.substring(originalFileName.lastIndexOf("."));
+    private static String getFileExtension(String filename) {
+        return filename.substring(filename.lastIndexOf("."));
     }
 
     /**

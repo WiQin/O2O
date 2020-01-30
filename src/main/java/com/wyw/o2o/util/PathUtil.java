@@ -7,7 +7,7 @@ package com.wyw.o2o.util;
  * @date 2019/11/08
  */
 public class PathUtil {
-    public static String seperator = System.getProperty("file.seperator");
+    public static String seperator = System.getProperty("file.separator");
 
     /**
      * 设置项目图片根路径

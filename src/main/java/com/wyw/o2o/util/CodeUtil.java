@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 public class CodeUtil {
 
     public static boolean checkVertifyCode(HttpServletRequest request){
-        String vertifyCodeExpected = (String)request.getSession().getAttribute(Constants.KAPTCHA_SESSION_CONFIG_KEY);
+        String vertifyCodeExpected = (String)request.getSession().getAttribute(Constants.KAPTCHA_SESSION_KEY);
 
         String vertifyCodeActual = HttpServletRequestUtil.getString(request,"vertifyCodeActual");
 

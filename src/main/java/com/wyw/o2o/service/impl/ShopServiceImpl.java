@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import java.io.File;
+import java.io.InputStream;
 import java.util.Date;
 
 /**
@@ -31,16 +32,16 @@ public class ShopServiceImpl implements ShopService {
      * Transactional注解进行事务管理（任何一步操作失败都返回）
      *
      * @param shop
-     * @param shopImg
+     * @param shopImgInputStream
      * @return
      */
     @Override
     @Transactional
-    public ShopExecution addShop(Shop shop, CommonsMultipartFile shopImg) {
+    public ShopExecution addShop(Shop shop, InputStream shopImgInputStream, String fileName) {
         if (shop == null) {
             return new ShopExecution(EnumShopState.NULL_SHOP);
         }
-        //todo shop其他字段判断(是否为空，是否非法)
+        //todo shop类别，地区判断(是否为空，是否非法)
 
         //添加店铺
         try {
@@ -59,16 +60,16 @@ public class ShopServiceImpl implements ShopService {
                 throw new ShopOperationException("店铺创建失败");
             } else {
                 //判断传入图片是否为空，不为空将店铺图片存到对应目录
-                if (null != shopImg) {
+                if (null != shopImgInputStream) {
                     //存储图片
                     try {
-                        addShopImg(shop, shopImg);
+                        addShopImg(shop, shopImgInputStream,fileName);
                     } catch (Exception e) {
-                        throw new ShopOperationException("add ShopImg error"+e.getMessage());
+                        throw new ShopOperationException("add ShopImg error" + e.getMessage());
                     }
                     //更新店铺图片地址
                     effectNum = shopDao.updateShop(shop);
-                    if(effectNum <= 0){
+                    if (effectNum <= 0) {
                         throw new ShopOperationException("更新图片地址失败");
                     }
                 }
@@ -76,13 +77,13 @@ public class ShopServiceImpl implements ShopService {
         } catch (Exception e) {
             throw new ShopOperationException("addShop error" + e.getMessage());
         }
-        return new ShopExecution(EnumShopState.CHECK,shop);
+        return new ShopExecution(EnumShopState.CHECK, shop);
     }
 
-    private void addShopImg(Shop shop,CommonsMultipartFile shopImg){
+    private void addShopImg(Shop shop, InputStream shopImgInputStream,String fileName) {
         //获取shop图片相对值路径
         String dest = PathUtil.getShopImgPath(shop.getShopId());
-        String shopAddr = ImagUtil.generateThumbnail(shopImg,dest);
+        String shopAddr = ImagUtil.generateThumbnail(shopImgInputStream, fileName,dest);
         shop.setShopImg(shopAddr);
     }
 }
